@@ -1,3 +1,4 @@
+Pygame tutorial made by buildwithpython and freeCodeCamp.org from www.youtube.com/watch?v=FfWpgLFMI7w
 Game icon, player, enemy & laser sprites made by Freepik from www.flaticon.com
 Background music is 'Strike the Earth!', played in the Plains of Passage from Shovel Knight
 Background made by vectorpouch from www.freepik.com
