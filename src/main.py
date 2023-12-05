@@ -1,5 +1,4 @@
 import pygame as pg
-from PIL import Image as PILImage
 from random import randint
 
 
@@ -7,11 +6,8 @@ class Image:
     def __init__(self, path: str):
         self.path = path
         self.surface = pg.image.load(self.path)
-
-        # https://www.geeksforgeeks.org/how-to-find-width-and-height-of-an-image-using-python/
-        dimensions = PILImage.open(self.path)
-        self.width, self.height = dimensions.size
-        dimensions.close()
+        self.rect = self.surface.get_rect()
+        self.width, self.height = self.surface.get_size()
 
 
 class Sprite:
