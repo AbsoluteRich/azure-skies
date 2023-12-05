@@ -1,5 +1,6 @@
 import pygame as pg
 from random import randint
+import os
 
 
 class Image:
@@ -48,6 +49,19 @@ window_width = 750
 fps = 60
 
 if __name__ == '__main__':
+    working_directory = os.getcwd()
+    potential_paths = [
+        os.path.join(working_directory, "assets"),  # /project/assets from /project/ (used in prod)
+        os.path.join(os.path.split(os.getcwd())[0], "assets")  # /project/assets/ from /project/src/ (used in dev)
+    ]
+
+    for path in potential_paths:
+        if os.path.exists(path):
+            os.chdir(path)
+            break
+    else:
+        raise FileNotFoundError("Assets directory not found")
+
     pg.init()
 
     # Local variables
