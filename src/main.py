@@ -55,9 +55,9 @@ if __name__ == '__main__':
         os.path.join(os.path.split(os.getcwd())[0], "assets")  # /project/assets/ from /project/src/ (used in dev)
     ]
 
-    for path in potential_paths:
-        if os.path.exists(path):
-            os.chdir(path)
+    for file_path in potential_paths:
+        if os.path.exists(file_path):
+            os.chdir(file_path)
             break
     else:
         raise FileNotFoundError("Assets directory not found")
@@ -102,7 +102,8 @@ if __name__ == '__main__':
     pg.mixer.music.load("mus_earth.wav")
     pg.mixer.music.play(-1)
     laser_sfx = pg.mixer.Sound("sfx_laser.wav")
-    enemy_explosion_sfx = pg.mixer.Sound("sfx_explosion.wav")
+    enemy_explosion_sfx = pg.mixer.Sound("sfx_enemy_explosion.wav")
+    player_explosion_sfx = pg.mixer.Sound("sfx_player_explosion.wav")
 
     while running:
         # Runs the game loop 60 times per second (frame rate)
@@ -141,6 +142,7 @@ if __name__ == '__main__':
                 # Enemy goes past the player
                 # ChatGPT wrote this condition
                 if enemy.y + enemy.image.height >= player.y:
+                    player_explosion_sfx.play()
                     game_over = True
 
             # Constraining the player's movement
