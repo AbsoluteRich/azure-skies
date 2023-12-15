@@ -7,7 +7,7 @@ class App:
         self.name = name
         self.image = Image(image_path)
 
-    def run(self):
+    def run(self) -> None:
         pg.init()
         pg.display.set_caption(self.name)
         screen = pg.display.set_mode((self.image.width, self.image.height))
@@ -22,7 +22,7 @@ class App:
             pg.display.update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     file_path = r""  # Insert file path here
     app = App("Have You Seen This Man?", file_path)
     app.run()

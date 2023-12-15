@@ -2,14 +2,14 @@ import pygame as pg
 from main import Sprite, window_width, window_height
 
 
-def get_centre(surface) -> tuple[int, int]:
+def get_centre(surface: pg.Surface) -> tuple[int, int]:
     # https://pastebin.com/diqQBz4Y
     width, height = pg.display.get_window_size()
     centre = (width // 2 - surface.get_width() // 2), (height // 2 - surface.get_height() // 2)
     return centre
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pg.init()
     screen = pg.display.set_mode((window_width, window_height))
     """

@@ -4,7 +4,7 @@ import os
 
 
 class Image:
-    def __init__(self, path: str):
+    def __init__(self, path: str) -> None:
         self.path = path
         self.surface = pg.image.load(self.path)
         self.rect = self.surface.get_rect()
@@ -12,7 +12,7 @@ class Image:
 
 
 class Sprite:
-    def __init__(self, image_path: str, x: int | float, y: int | float, **kwargs: any):
+    def __init__(self, image_path: str, x: int | float, y: int | float, **kwargs: any) -> None:
         self.image = Image(image_path)
         self.x = x
         self.y = y
@@ -48,7 +48,7 @@ window_height = 500
 window_width = 750
 fps = 60
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     working_directory = os.getcwd()
     potential_paths = [
         os.path.join(working_directory, "assets"),  # /project/assets from /project/ (used in prod)
