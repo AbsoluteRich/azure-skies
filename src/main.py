@@ -1,3 +1,4 @@
+# noinspection PyPackageRequirements
 import pygame as pg
 from random import randint
 import os
@@ -46,7 +47,6 @@ class Sprite:
 # Global variables
 window_height = 500
 window_width = 750
-fps = 60
 
 if __name__ == "__main__":
     working_directory = os.getcwd()
@@ -62,21 +62,29 @@ if __name__ == "__main__":
     else:
         raise FileNotFoundError("Assets directory not found")
 
+    try:
+        ce = pg.IS_CE
+    except AttributeError:
+        raise ModuleNotFoundError("This program requires Pygame CE to run. See the website for more details. "
+                                  "https://pyga.me/")
+
     pg.init()
 
     # Local variables
     running = True
-    speed = 8
     score = 0
     enemy_count = 6
-    font = pg.font.Font("Neuropolitical.otf", 30)
+    font = pg.Font("Neuropolitical.otf", 30)
     game_over = False
 
     # Setting up the window
     screen = pg.display.set_mode((window_width, window_height), pg.RESIZABLE)
     pg.display.set_caption("Azure Skies")  # Working name
     pg.display.set_icon(pg.image.load("icon.png"))
-    clock = pg.time.Clock()
+    clock = pg.Clock()
+
+    fps = pg.display.get_current_refresh_rate()
+    speed = 8 * (60/fps)  # Normalises the speed across refresh rates (hopefully)
 
     # Sprites
     player = Sprite("spaceship.png", 343, 218 + 200)
